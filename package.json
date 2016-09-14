@@ -1,0 +1,28 @@
+{
+    "name": "array-chunk-reader",
+    "version": "0.0.1",
+    "description": "Module for read array by chunks with promise",
+    "main": "./index.js",
+    "author": {
+        "name": "Balasyan Alexandr",
+        "email": "mywebstreet@gmail.com"
+    },
+    "keywords": [
+        "chunk",
+        "array",
+        "read",
+        "big",
+        "loop",
+        "pipe"
+    ],
+    "license": "MIT",
+    "dependencies": {
+    }, 
+	"repository" : { 
+		"type" : "git",
+		"url" : "https://github.com/ortexx/array-chunk-reader"
+	},
+    "engines": {
+        "node": ">=5.0.0"
+    }		
+}
