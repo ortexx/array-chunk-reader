@@ -7,7 +7,7 @@ You can shuffle big array by segments.
 
 # Example
 ```js
-const arrayChunkReader = require("array-chunk-reade");
+const arrayChunkReader = require("array-chunk-reader");
     let array = [];
     
     for(let i = 0; i < 1000000; i++) {
