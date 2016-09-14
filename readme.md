@@ -19,7 +19,9 @@ const arrayChunkReader = require("array-chunk-reader");
     }
     
     /* 
-    each chunk will wait until all functions(fn) are finished. Only then will a pause of the specified length and the next segment to be launched. If the function returns a promise, all functions in one chunk will be executed in parallel.    
+        Each chunk will wait until all functions(fn) are finished. 
+        Only then will a pause of the specified length and the next segment to be launched. 
+        If the function returns a promise, all functions in one chunk will be executed in parallel.    
     */
     
     let options = {
