@@ -2,7 +2,7 @@
 `npm install array-chunk-reader`
 
 # About
-Module for read array by chunks with promise
+Module for read array by chunks with promise    
 You can shuffle big array by segments. 
 
 # Example
