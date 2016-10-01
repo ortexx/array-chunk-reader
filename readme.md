@@ -8,34 +8,33 @@ You can shuffle big array by segments.
 # Example
 ```js
 const arrayChunkReader = require("array-chunk-reader");
-    let array = [];
-    
-    for(let i = 0; i < 1000000; i++) {
-        array.push("element" + i);
-    }
-    
-    let fn = (value) => {
-        return Promise.resolve(value); 
-    }
-    
-    /* 
-        Each chunk will wait until all functions(fn) are finished. 
-        Only then will a pause of the specified length and the next segment to be launched. 
-        If the function returns a promise, all functions in one chunk will be executed in parallel.    
-    */
-    
-    let options = {
-        size: 100, // chunk size, default = parseInt(Math.sqrt(array.length)) 
-        timeout: 10, // timout after each chunk, default = 1 
-        log: true // show all process information on log, default = true 
-        startFrom: 0 // start position, default = 0
-        readTo: array.length // end position, default = array.length
-    }
+let array = [];
 
-    let arrayReader = new ArrayChunkReader(array, options);
+for(let i = 0; i < 1000000; i++) {
+    array.push("element" + i);
+}
 
-    return arrayReader.start(fn).then(() => {
-        // finish
-    });
+let fn = (value) => {
+    return Promise.resolve(value); 
+}
 
+/* 
+    Each chunk will wait until all functions(fn) are finished. 
+    Only then will a pause of the specified length and the next segment to be launched. 
+    If the function returns a promise, all functions in one chunk will be executed in parallel.    
+*/
+
+let options = {
+    size: 100, // chunk size, default = parseInt(Math.sqrt(array.length)) 
+    timeout: 10, // timout after each chunk, default = 1 
+    log: true // show all process information on log, default = true 
+    startFrom: 0 // start position, default = 0
+    readTo: array.length // end position, default = array.length
+}
+
+let arrayReader = new ArrayChunkReader(array, options);
+
+return arrayReader.start(fn).then(() => {
+    // finish
+});
 ```
