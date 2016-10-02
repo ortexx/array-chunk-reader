@@ -27,8 +27,8 @@ let fn = (value) => {
 let options = {
     size: 100, // chunk size, default = parseInt(Math.sqrt(array.length)) 
     timeout: 10, // timeout after each chunk, default = 1 
-    log: true // show all process information on log, default = true 
-    startFrom: 0 // start position, default = 0
+    log: true, // show all process information on log, default = true 
+    startFrom: 0, // start position, default = 0
     readTo: array.length // end position, default = array.length
 }
 
