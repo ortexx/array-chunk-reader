@@ -15,9 +15,7 @@
         "loop",
         "pipe"
     ],
-    "license": "MIT",
-    "dependencies": {
-    }, 
+    "license": "MIT",    
 	"repository" : { 
 		"type" : "git",
 		"url" : "https://github.com/ortexx/array-chunk-reader"
