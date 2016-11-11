@@ -1,6 +1,6 @@
 {
     "name": "array-chunk-reader",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "Module for read array by chunks with promise",
     "main": "./index.js",
     "author": {
@@ -15,12 +15,12 @@
         "loop",
         "pipe"
     ],
-    "license": "MIT",    
-	"repository" : { 
+    "license": "MIT",
+	"repository" : {
 		"type" : "git",
 		"url" : "https://github.com/ortexx/array-chunk-reader"
 	},
     "engines": {
         "node": ">=5.0.0"
-    }		
+    }
 }
