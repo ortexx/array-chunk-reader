@@ -2,8 +2,7 @@
 `npm install array-chunk-reader`
 
 # About
-Module for read array by chunks with promise    
-You can shuffle big array by segments.
+Module for reading array by chunks using promise
 
 # Example
 ```js
@@ -18,23 +17,31 @@ let fn = (value) => {
     return Promise.resolve(value);
 }
 
+let fnChunk = (allChunkValuesList) => {
+    return Promise.resolve(allChunkValuesList);
+}
+
 /*
-    Each part will be waiting for the end of all functions(fn).
-    Then a pause of the specified length and the next segment will be launched.
-    If the function returns a promise, all functions in one chunk will be executed in parallel.    
+    Each chunk waits of completion all functions(fn). fnChunk is called after that.
+    Then there is a pause of the specified length and the next chunk starts.
+    If the function returns a promise, all functions in one chunk are called in parallel.
 */
 
 let options = {
     size: 100, // chunk size, default = parseInt(Math.sqrt(array.length))
     timeout: 10, // timeout after each chunk, default = 1
     log: true, // show all process information on log, default = true
-    startFrom: 0, // start position, default = 0
-    readTo: array.length // end position, default = array.length
+    from: 0, // start position, default = 0 (you can use also .startFrom)
+    to: array.length // end position, default = array.length (you can use also .readTo)
 }
 
-let arrayReader = new ArrayChunkReader(array, options);
+let arrayReader = new arrayChunkReader(array, options);
 
-return arrayReader.start(fn).then(() => {
+return arrayReader.start(fn, fnChunk).then(() => {
     // finish
 });
 ```
+
+# Api
+### .getCurrentChunkSize()
+returns current chunk size
