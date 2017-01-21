@@ -137,7 +137,7 @@
     }
   }
 
-  if (module && typeof module == "object" && typeof module.exports == "object") {
+  if (typeof module == "object" && typeof module.exports == "object") {
     module.exports = ArrayChunkReader;
   }
   else if (typeof window == "object") {
