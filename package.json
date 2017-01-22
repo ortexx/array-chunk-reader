@@ -1,7 +1,7 @@
 {
   "name": "array-chunk-reader",
-  "version": "0.1.1",
-  "description": "Module for read array by chunks with promise",
+  "version": "0.1.2",
+  "description": "Module for reading array by chunks using promise",
   "main": "./index.js",
   "author": {
     "name": "Balasyan Alexandr",
@@ -15,6 +15,13 @@
     "loop",
     "pipe"
   ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "chai": "^3.5.0"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",

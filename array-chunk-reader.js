@@ -3,10 +3,21 @@
 (function () {
   class ArrayChunkReader {
     constructor(array, options) {
+      options = options || {};
+
       this.array = array;
       this.arrayLength = array.length;
       this.startFrom = options.startFrom || options.from || 0;
       this.startTo =  options.readTo || options.to || this.arrayLength;
+
+      if (this.startFrom > array.length) {
+        this.startFrom = length;
+      }
+
+      if(this.startTo < this.startFrom) {
+        throw new Error('Wrong range for reading');
+      }
+
       this.currentFrom = this.startFrom;
       this.currentTo = this.startTo;
 
@@ -90,7 +101,7 @@
         callback(null, info);
       }).catch((err) => {
         callback(err, info);
-      })
+      });
     }
 
     start(fn, fnChunk) {
