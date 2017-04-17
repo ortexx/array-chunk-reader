@@ -21,14 +21,10 @@ let fnChunk = (allChunkValuesList) => {
     return Promise.resolve(allChunkValuesList);
 }
 
-/*
-    
-*/
-
 let options = {
-    size: 100, // chunk size, default = parseInt(Math.sqrt(array.length))
+    size: 100, // chunk size, default = Math.floor(Math.sqrt(array.length))
     timeout: 10, // timeout after each chunk, default = 1
-    log: true, // show all process information on log, default = true
+    log: true, // to log a process, default = true
     from: 0, // start position, default = 0 (you can use also .startFrom)
     to: array.length // end position, default = array.length (you can use also .readTo)
 }
