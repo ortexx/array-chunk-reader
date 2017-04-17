@@ -22,9 +22,7 @@ let fnChunk = (allChunkValuesList) => {
 }
 
 /*
-    Each chunk waits of completion all functions(fn). fnChunk is called after that.
-    Then there is a pause of the specified length and the next chunk starts.
-    If the function returns a promise, all functions in one chunk are called in parallel.
+    
 */
 
 let options = {
@@ -41,6 +39,11 @@ return arrayReader.start(fn, fnChunk).then(() => {
     // finish
 });
 ```
+
+# Description  
+Every chunk waits of all "fn" functions completion. "fnChunk" function will be called after that.  
+Then there will be a pause of a given length and the next chunk will start.  
+If a function returns a promise, all functions in one chunk will be called in parallel.  
 
 # Api
 ### .getCurrentChunkSize()
