@@ -1,6 +1,6 @@
-"use strict";
-
 (function () {
+  "use strict";
+  
   class ArrayChunkReader {
     constructor(array, options) {
       options = options || {};
