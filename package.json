@@ -1,6 +1,6 @@
 {
   "name": "array-chunk-reader",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Module for reading array by chunks using promise",
   "main": "./index.js",
   "author": {
