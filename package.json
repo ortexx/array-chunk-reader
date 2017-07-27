@@ -13,7 +13,9 @@
     "read",
     "big",
     "loop",
-    "pipe"
+    "pipe",
+    "concurrency",
+    "concurrent"
   ],
   "scripts": {
     "test": "mocha"
