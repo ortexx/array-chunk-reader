@@ -13,15 +13,15 @@ for(let i = 0; i < 1000000; i++) {
     array.push("element" + i);
 }
 
-let fn = (value) => {
+const fn = (value) => {
     return Promise.resolve(value);
 }
 
-let fnChunk = (allChunkValuesList) => {
+const fnChunk = (allChunkValuesList) => {
     return Promise.resolve(allChunkValuesList);
 }
 
-let options = {
+const options = {
     size: 100, // chunk size, default = Math.floor(Math.sqrt(array.length))
     timeout: 10, // timeout after each chunk, default = 1
     log: true, // to log a process, default = true
