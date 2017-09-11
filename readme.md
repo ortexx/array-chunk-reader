@@ -29,7 +29,7 @@ const options = {
     to: array.length // end position, default = array.length (you can use also .readTo)
 }
 
-let arrayReader = new arrayChunkReader(array, options);
+const arrayReader = new arrayChunkReader(array, options);
 
 return arrayReader.start(fn, fnChunk).then(() => {
     // finish
