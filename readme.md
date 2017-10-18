@@ -5,6 +5,7 @@
 Module for reading array by chunks using promise
 
 # Example
+
 ```js
 const arrayChunkReader = require("array-chunk-reader");
 let array = [];
