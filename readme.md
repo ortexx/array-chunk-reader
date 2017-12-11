@@ -44,4 +44,4 @@ If a function returns a promise, all functions in one chunk will be called in pa
 
 # Api
 ### .getCurrentChunkSize()
-returns current chunk size
+returns the current chunk size
