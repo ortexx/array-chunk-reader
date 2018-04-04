@@ -14,7 +14,7 @@ for(let i = 0; i < 1000000; i++) {
     array.push("element" + i);
 }
 
-// Handle each array item
+// Handle each item
 const fn = (value) => {
     return Promise.resolve(value);
 }
