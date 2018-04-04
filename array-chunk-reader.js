@@ -42,17 +42,14 @@
 
     chunk(lastInfo, fn, fnChunk, callback) {
       lastInfo = lastInfo || {};
-
       let startChunk = Date.now();
       let length = this.startTo;
       let start = this.startFrom;
-
       let info = {
         iteration: (lastInfo.iteration || 0) + 1,
         length: length,
         from: lastInfo.to || start,
       };
-
       info.to = info.from + this.options.size;
 
       if (info.needTime < 0) {
@@ -65,16 +62,13 @@
 
       if (info.from >= length) {
         let result = {};
-
         result.avgChunkTime = lastInfo.avgTime || 0;
         result.chunkCount = lastInfo.iteration || 0;
-
         return callback(null, info, result);
       }
 
       this.currentFrom = info.from;
       this.currentTo = info.to;
-
       let promise = [];
 
       for (let i = info.from; i < info.to; i++) {
@@ -92,7 +86,6 @@
         }
       }).then(() => {
         let realLength = length - start;
-
         promise = null;
         info.time = Date.now() - startChunk;
         info.pastTime = (lastInfo.pastTime || 0) + info.time;
@@ -114,7 +107,6 @@
           }
           else if (result) {
             result.time = Date.now() - start;
-
             return callback(null, result);
           }
 
@@ -136,10 +128,10 @@
       return new Promise((res, rej) => {
         next(null, fn, fnChunk, (err, result) => {
           if (err) {
-            rej(err);
+            return rej(err);
           }
           else if (result) {
-            res(result);
+            return res(result);
           }
 
           rej(new Error("Array chunk reader failed"));
