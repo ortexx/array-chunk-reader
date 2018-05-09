@@ -1,10 +1,13 @@
 (function () {
   "use strict";
-  
+
   class ArrayChunkReader {
     constructor(array, options) {
-      options = options || {};
+      if(!Array.isArray(array)) {
+        throw new Error('You have to pass an array');
+      }
 
+      options = options || {};
       this.array = array;
       this.arrayLength = array.length;
       this.startFrom = options.startFrom || options.from || 0;
@@ -21,7 +24,7 @@
       this.currentFrom = this.startFrom;
       this.currentTo = this.startTo;
 
-      let defaults = {
+      const defaults = {
         size: Math.floor(Math.sqrt(this.arrayLength)),
         timeout: 1,
         log: true
@@ -31,7 +34,7 @@
     }
 
     getCurrentChunkSize()  {
-      let diff = this.currentTo - this.currentFrom;
+      const diff = this.currentTo - this.currentFrom;
 
       if(diff < this.options.size) {
         return diff;
@@ -45,11 +48,13 @@
       let startChunk = Date.now();
       let length = this.startTo;
       let start = this.startFrom;
-      let info = {
+
+      const info = {
         iteration: (lastInfo.iteration || 0) + 1,
         length: length,
         from: lastInfo.to || start,
       };
+      
       info.to = info.from + this.options.size;
 
       if (info.needTime < 0) {
@@ -92,15 +97,13 @@
         info.avgTime = Math.floor(info.pastTime / info.iteration);
         info.needTime = Math.floor(realLength * info.avgTime / this.options.size) - info.pastTime;
         callback(null, info);
-      }).catch((err) => {
-        callback(err, info);
-      });
+      }).catch(callback);
     }
 
     start(fn, fnChunk) {
       let start = Date.now();
 
-      let next = (lastInfo, fn, fnChunk, callback) => {
+      const next = (lastInfo, fn, fnChunk, callback) => {
         this.chunk(lastInfo, fn, fnChunk, (err, info, result) => {
           if (err) {
             return callback(err);
@@ -118,10 +121,9 @@
             return next(info, fn, fnChunk, callback);
           }
 
-          let timeout = setTimeout(() => {
-            clearTimeout(timeout);
+          setTimeout(() => {
             next(info, fn, fnChunk, callback);
-          }, this.options.timeout)
+          }, this.options.timeout);
         });
       };
 
@@ -136,7 +138,7 @@
 
           rej(new Error("Array chunk reader failed"));
         });
-      })
+      });
     }
   }
 

@@ -2,47 +2,35 @@
 `npm install array-chunk-reader`
 
 # About
-Module for reading array by chunks using promise
+Module for reading an array by chunks using a promise
 
 # Example
 
 ```js
 const arrayChunkReader = require("array-chunk-reader");
-let array = [];
+const array = [];
 
-for(let i = 0; i < 1000000; i++) {
-    array.push("element" + i);
+for (let i = 0; i < 1000000; i++) {
+  array.push("item-" + i);
 }
 
-// Handle each item
-const fn = (value) => {
-    return Promise.resolve(value);
-}
+// Function to handle each item
+const fn = value => Promise.resolve(value);
 
-// Handle a chunk
-const fnChunk = (allChunkValuesList) => {
-    return Promise.resolve(allChunkValuesList);
-}
+// Function to handle a chunk
+const fnChunk = allChunkValuesList => Promise.resolve(allChunkValuesList);
 
 const options = {
-    size: 100, // chunk size, default = Math.floor(Math.sqrt(array.length))
-    timeout: 10, // timeout after each chunk, default = 1
-    log: true, // to log the process, default = true
-    from: 0, // start position, default = 0
-    to: array.length // end position, default = array.length
+  size: 100,         // chunk size, default = Math.floor(Math.sqrt(array.length))
+  timeout: 10,       // timeout after each chunk, default = 1
+  log: true,         // to log the process, default = true
+  from: 0,           // start position, default = 0
+  to: array.length   // end position, default = array.length
 }
 
 const arrayReader = new arrayChunkReader(array, options);
-
-return arrayReader.start(fn, fnChunk).then(() => {
-    // finish
-});
+arrayReader.start(fn, fnChunk).then(() => 'the end');
 ```
-
-# Description  
-Every chunk waits of all "fn" functions completion. "fnChunk" function will be called after that.  
-Then there will be a pause of a given length and the next chunk will start.  
-If a function returns a promise, all functions in one chunk will be called in parallel.  
 
 # Api
 ### .getCurrentChunkSize()
