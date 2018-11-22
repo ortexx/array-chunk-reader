@@ -14,14 +14,14 @@ describe('ArrayChunkReader:', function() {
   }
 
   describe('api', function() {
-    describe('#constructor', function () {
+    describe('.constructor', function () {
       it('check instance', function () {
         reader = new ArrayChunkReader(array, {log: false, size: size});
         assert.instanceOf(reader, ArrayChunkReader);
       });
     });
 
-    describe('#start()', function () {
+    describe('.start()', function () {
       it('check returned fn value', function () {
         let counter = 1;
         let fn = (value) => {
@@ -50,7 +50,26 @@ describe('ArrayChunkReader:', function() {
       });
     });
 
-    describe('#getCurrentChunkSize()', function () {
+    describe('.stop()', function () {
+      it('check returned fn value', function () {
+        let counter = 0;
+        let size = 5;
+
+        reader = new ArrayChunkReader(array, {size: size, log: false});
+
+        return reader.start(() => {
+          counter++;
+
+          if(counter == 3) {
+            reader.stop();
+          }
+        }).then((res) => {
+          assert.equal(counter, size);
+        });
+      });
+    });
+
+    describe('.getCurrentChunkSize()', function () {
       it('check chunk size in every fnChunk', function () {
         let fn = (value) => {
         };
@@ -61,7 +80,7 @@ describe('ArrayChunkReader:', function() {
 
         return reader.start(fn, fnChunk);
       });
-    });
+    });    
   });
 
   describe('options', function() {

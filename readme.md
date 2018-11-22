@@ -35,3 +35,6 @@ arrayReader.start(fn, fnChunk).then(() => 'the end');
 # Api
 ### .getCurrentChunkSize()
 returns the current chunk size
+
+### .stop()
+cancel all next chunks after the current 

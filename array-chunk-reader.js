@@ -65,10 +65,11 @@
         info.to = length;
       }
 
-      if (info.from >= length) {
+      if (info.from >= length || this.__stopped) {
         let result = {};
         result.avgChunkTime = lastInfo.avgTime || 0;
         result.chunkCount = lastInfo.iteration || 0;
+        this.__stopped && this.options.log && console.log("Array chunk reader has been stopped");
         return callback(null, info, result);
       }
 
@@ -136,9 +137,13 @@
             return res(result);
           }
 
-          rej(new Error("Array chunk reader failed"));
+          rej(new Error("Array chunk reader is failed"));
         });
       });
+    }
+
+    stop() {
+      this.__stopped = true;
     }
   }
 
