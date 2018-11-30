@@ -54,7 +54,6 @@ describe('ArrayChunkReader:', function() {
       it('check returned fn value', function () {
         let counter = 0;
         let size = 5;
-
         reader = new ArrayChunkReader(array, {size: size, log: false});
 
         return reader.start(() => {
@@ -63,7 +62,9 @@ describe('ArrayChunkReader:', function() {
           if(counter == 3) {
             reader.stop();
           }
-        }).then((res) => {
+        }, () => {
+          counter++;
+        }).then(() => {
           assert.equal(counter, size);
         });
       });

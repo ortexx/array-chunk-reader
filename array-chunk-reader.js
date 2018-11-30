@@ -87,7 +87,7 @@
       }
 
       Promise.all(promise).then((data) => {
-        if(fnChunk) {
+        if(!this.__stopped && fnChunk) {
           return fnChunk(data);
         }
       }).then(() => {
