@@ -1,6 +1,6 @@
 {
   "name": "array-chunk-reader",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Module for reading array by chunks using promise",
   "main": "./index.js",
   "author": {
@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^7.1.1"
+    "mocha": "^7.2.0"
   },
   "license": "MIT",
   "repository": {
